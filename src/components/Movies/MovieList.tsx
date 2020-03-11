@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import useDataApi from "../api/useDataApi";
+import useDataApi from "../../api/useDataApi";
+
 interface Data {
   url: string | undefined;
   original_title: string;
@@ -37,4 +38,5 @@ const MovieList: React.FC<ListData | any> = () => {
     ));
   } else return null;
 };
+
 export default MovieList;

@@ -1,0 +1,27 @@
+.outer {
+  display: flex;
+  width: 30em;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: flex-start;
+}
+.container {
+  display: flex;
+  flex-flow: column;
+  width: 18em;
+  align-items: center;
+  border-style: outset;
+  border-color: black;
+  border-width: 0.05em;
+  justify-content: space-evenly;
+
+  margin: 0.5em;
+}
+.picture {
+  height: 22em;
+  width: 18em;
+}
+.title {
+  font-weight: bold;
+  font: 1.5em sans-serif;
+}
