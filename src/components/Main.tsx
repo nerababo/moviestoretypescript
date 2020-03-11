@@ -1,42 +1,46 @@
 import React, { ReactElement, useState } from "react";
-import SearchShow from "./Shows/SearchShow";
+import ShowsSearch from "./Shows/ShowsSearch";
 import ShowList from "./Shows/ShowList";
 import MovieList from "./Movies/MovieList";
-import MovieSearch from "./Movies/MovieSearch";
+import MoviesSearch from "./Movies/MoviesSearch";
+import Search from "./Search/OLD_Search";
 
-function ToggleStuff(stuff: number) {
-  switch (stuff) {
-    case 1:
-      return (
-        <>
-          <SearchShow />
-          <ShowList />
-        </>
-      );
-    case 2:
-      return (
-        <div>
-          <MovieSearch />
-          <MovieList />
-        </div>
-      );
-    default:
-      return (
-        <div>
-          <SearchShow />
-          <ShowList />
-        </div>
-      );
-  }
+function renderContent(activeTab: number) {
+  // if (activeTab === TABS.SHOWS) return <ShowList />;
+  // if (activeTab === TABS.MOVIES) return <MovieList />;
+  // switch (activeTab) {
+  //   case 1:
+  //     return (
+  //       <>
+  //         <ShowsSearch />
+  //         <ShowList />
+  //       </>
+  //     );
+  //   case 2:
+  //     return (
+  //       <div>
+  //         <MoviesSearch />
+  //         <MovieList />
+  //       </div>
+  //     );
+  //   default:
+  //     return (
+  //       <div>
+  //         <ShowsSearch />
+  //         <ShowList />
+  //       </div>
+  //     );
+  // }
 }
 
 export default function Main(): ReactElement {
-  const [stuff, setStuff] = useState();
+  // const [activeTab, setActiveTab] = useState(TABS.SHOWS);
   return (
     <div>
-      <button onClick={() => setStuff(1)}>Shows</button>
-      <button onClick={() => setStuff(2)}>Movies</button>
-      {ToggleStuff(stuff)}
+      {/* <button onClick={() => setActiveTab(TABS.SHOWS)}>Shows</button>
+      <button onClick={() => setActiveTab(TABS.MOVIES)}>Movies</button> */}
+      <Search />
+      {/* {renderContent(activeTab)} */}
     </div>
   );
 }

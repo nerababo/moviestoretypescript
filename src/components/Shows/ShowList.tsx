@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import useDataApi from "../../api/useDataApi";
 import "../styles.css";
+
 interface Data {
   url: string | undefined;
   original_name: string;
@@ -26,17 +27,15 @@ const ShowList: React.FC<ListData | any> = () => {
   }, []);
 
   if (data && data.results) {
-    return data.results.slice(10).map((hit: Data) => (
-      <div className="outer">
-        <div key={hit.id} className="container">
-          <img
-            src={`${imageLink}${hit.poster_path}`}
-            alt="imagename"
-            title={hit.original_name}
-            className="picture"
-          />
-          <h5 className="title">{hit.original_name}</h5>
-        </div>
+    return data.results.slice(0, 10).map((movie: Data) => (
+      <div key={movie.id} className="container">
+        <img
+          src={`${imageLink}${movie.poster_path}`}
+          alt="imagename"
+          title={movie.original_name}
+          className="picture"
+        />
+        <h5 className="title">{movie.original_name}</h5>
       </div>
     ));
   } else return null;

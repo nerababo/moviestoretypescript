@@ -1,13 +1,13 @@
 import React from "react";
 import useDataApi from "../../api/useDataApi";
-import SearchResult from "../Search/SearchResult";
-import SearchForm from "../Search/SearchForm";
+import SearchResult from "../Search/OLD_SearchResult";
+import SearchForm from "../Search/OLD_SearchForm";
 
-function SearchShow() {
+function MoviesSearch() {
   const { data, isLoading, isError, setUrl } = useDataApi();
   const onSubmitHandler = (inputValue: string) => {
     setUrl(
-      `https://api.themoviedb.org/3/search/tv?api_key=482d929cb4907d666170f441baa7bd20&language=en-US&query=${inputValue}&page=1`
+      `https://api.themoviedb.org/3/search/movie?api_key=482d929cb4907d666170f441baa7bd20&language=en-US&query=${inputValue}&page=1&include_adult=false`
     );
   };
 
@@ -21,4 +21,4 @@ function SearchShow() {
   );
 }
 
-export default SearchShow;
+export default MoviesSearch;
