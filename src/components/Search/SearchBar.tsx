@@ -11,7 +11,9 @@ interface Props {
   handleSearch: (value: string) => void;
   activeTab: number;
 }
-
+export interface Types {
+  searchTerm: string;
+}
 export default function SearchBar({
   handleSearch,
   activeTab
@@ -32,7 +34,7 @@ export default function SearchBar({
   // const debounced = debounce(() => handleSearch(searchTerm), 1000);
 
   useEffect(() => {
-    if (searchTerm.length >= 3) debounced();
+    debounced();
     return () => {
       debounced.cancel();
     };
@@ -46,7 +48,6 @@ export default function SearchBar({
         value={searchTerm}
         onChange={handleChange}
       />
-      <button type="submit">Search</button>
     </div>
   );
 }
