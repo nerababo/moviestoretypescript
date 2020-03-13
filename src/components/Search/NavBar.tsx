@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import { TABS } from "../../utils/constants";
 
 export const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
