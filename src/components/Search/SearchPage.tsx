@@ -1,9 +1,14 @@
-import React, { useState, useRef, ReactElement } from "react";
+import React, { useState, useRef, ReactElement, useEffect } from "react";
 import NavBar from "./NavBar";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import { TABS } from "../../utils/constants";
-import { searchMovies, searchShows } from "../../api/api";
+import {
+  searchMovies,
+  searchShows,
+  getTopMovies,
+  getTopShows
+} from "../../api/api";
 
 interface Props {}
 
@@ -13,6 +18,21 @@ export default function SearchPage({}: Props): ReactElement {
   tabRef.current = activeTab;
 
   const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchDefault() {
+      let response;
+      if (tabRef.current === TABS.MOVIES) {
+        response = await getTopMovies();
+      }
+      if (tabRef.current === TABS.SHOWS) {
+        response = await getTopShows();
+      }
+      const list = prepareList(response?.data?.results);
+      setData(list);
+    }
+    fetchDefault();
+  }, [activeTab]);
 
   const handleSearch = async (searchTerm: string) => {
     let response;
@@ -34,7 +54,7 @@ export default function SearchPage({}: Props): ReactElement {
     </>
   );
 }
-
+// merged the title of shows & movies
 const prepareList = (list: any) => {
   return list.map((item: any) => {
     return {

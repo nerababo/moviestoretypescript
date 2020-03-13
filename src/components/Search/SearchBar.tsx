@@ -46,7 +46,6 @@ export default function SearchBar({
         value={searchTerm}
         onChange={handleChange}
       />
-      <button type="submit">Search</button>
     </div>
   );
 }
