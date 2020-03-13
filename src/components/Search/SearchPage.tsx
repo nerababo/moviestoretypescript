@@ -12,7 +12,7 @@ import {
 
 interface Props {}
 
-export default function SearchPage({}: Props): ReactElement {
+export default function SearchPage(): ReactElement {
   const [activeTab, setActiveTab] = useState(TABS.SHOWS);
   const tabRef = useRef<number>(activeTab);
   tabRef.current = activeTab;
@@ -43,6 +43,7 @@ export default function SearchPage({}: Props): ReactElement {
       response = await searchShows(searchTerm);
     }
     const list = prepareList(response?.data?.results);
+
     setData(list);
   };
 
@@ -61,7 +62,8 @@ const prepareList = (list: any) => {
       title: item.original_name ?? item.original_title,
       img: item.poster_path,
       overview: item.overview,
-      id: item.id
+      id: item.id,
+      type: item.type
     };
   });
 };

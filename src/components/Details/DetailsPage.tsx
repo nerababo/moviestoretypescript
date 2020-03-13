@@ -1,7 +1,10 @@
 import React, { ReactElement } from "react";
+import { useParams } from "react-router-dom";
 
 interface Props {}
 
 export default function DetailsPage({}: Props): ReactElement {
-  return <div>det</div>;
+  const { id } = useParams();
+
+  return <div>{id}</div>;
 }

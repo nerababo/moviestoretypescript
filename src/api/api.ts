@@ -4,13 +4,13 @@ export const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 export const getTopMovies = () => {
   return axiosWrapper.get(
-    `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+    `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1&append_to_response=type`
   );
 };
 
 export const getTopShows = () => {
   return axiosWrapper.get(
-    `/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+    `/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1&append_to_response=type`
   );
 };
 
@@ -26,10 +26,14 @@ export const searchShows = (value: string) => {
   );
 };
 
-export const getMovieDetails = () => {
-  //
+export const getMovieDetails = (id: string) => {
+  return axiosWrapper.get(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+  );
 };
 
-export const getShowDetails = () => {
-  //
+export const getShowDetails = (id: string) => {
+  return axiosWrapper.get(
+    `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`
+  );
 };

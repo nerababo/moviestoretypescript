@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import noImgAvail from "../../sample/noImgAvail.jpg";
+
 interface Props {
   data: Array<any>;
 }
@@ -8,7 +9,7 @@ export default function SearchResults({ data }: Props): ReactElement {
   return (
     <>
       {data.map(item => (
-        <Item item={item} />
+        <Item item={item} key={item.id} />
       ))}
     </>
   );
